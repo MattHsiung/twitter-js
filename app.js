@@ -1,10 +1,10 @@
+//------------MODULES
 var express = require( 'express' );
 var swig = require('swig');
 var app = express();
 var routes = require( './routes/' );
-
-
-
+var socketio = require('socket.io');
+//---------------SETUP
 swig.setDefaults({ cache: false});
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -17,19 +17,22 @@ app.use(express.static('public'))
 // 	console.log(req.url)
 // 	next()
 // });
-app.use('/', routes);
+var server = app.listen(3000, function (){
+	console.log('server listening')
+});
 
 
 
+var io = socketio.listen(server);
 
 //----------------END------------
 // app.use(function(req, res, next){
 // 	console.log('Status:' + res.statusCode)
 // });
+//------------SERVER
 
-app.listen(3000, function (){
-	console.log('server listening')
-});
+
+app.use( '/', routes(io) );
 
 // app.use('/special/', function(req, res, next){
 // 	console.log('you reached speshul')

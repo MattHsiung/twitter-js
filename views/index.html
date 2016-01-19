@@ -1,7 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  
+   {% if showForm %}
+  <form action="/tweets" method="POST">
+    <label for="name_field">Name:</label>
+    <input name="name" type="text" id="name_field" value="{{dynName}}" />
+
+    <label for="text_field">Text:</label>
+    <input name="text" type="text" id="text_field" style="width: 350px;" />
+
+    <input type="submit" value="Submit" />
+  </form>
+  {% endif %}
+
   <div class="page-header">
     <h1>Welcome to Twitter.js!</h1>
   </div>
@@ -11,14 +22,18 @@
       <b>Your Name</b><br>
       100 followers
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9" id ="tweetList">
     
       <!-- display tweets here -->
       {% for tweet in tweets %}
-        <li>{{tweet.text}}</li>
+       
+        <li><a href="/users/{{tweet.name}}"><h4>{{tweet.name}}</h4></a> <br> 
+        {{tweet.text}}</li>
       {% endfor %}
       
     </div>
   </div>
+
+ 
     
 {% endblock %}

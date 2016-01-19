@@ -1,13 +1,15 @@
 var _ = require( 'lodash')
 var data = [
 	{name: 'Matt Hsiung',
-	text: "yolo!"},
+	text: "yolo!",
+	id: 99},
 	{name: 'Prakash Mallela',
-	text: 'swagg'}
+	text: 'swagg',
+	id: 98}
 ];
 
 function add (name, text) {
-  data.push({ name: name, text: text });
+  data.push({ name: name, text: text, id: getId() });
 };
 
 function list () {
@@ -26,6 +28,12 @@ module.exports = { add: add, list: list, find: find };
 var randArrayEl = function(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 };
+
+var id=0
+
+var getId = function(){
+	return id++
+}
 
 var getFakeName = function() {
   var fakeFirsts = ['Nimit', 'Dave', 'Shanna', 'Charlotte', 'Scott', 'Ayana', 'Omri', 'Gabriel', 'Joe'];
