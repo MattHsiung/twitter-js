@@ -1,6 +1,3 @@
-
-
-
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser')
@@ -31,7 +28,7 @@ module.exports = function (io) {
 		var text = req.body.text;
 		tweetBank.add(name, text);
 		io.sockets.emit('new_tweet', {name: name, text: text})
-		// res.redirect('/');
+		res.redirect('/');
 	});
 
 	router.get('/tweets/:id', function (req, res) {

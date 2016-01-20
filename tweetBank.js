@@ -2,10 +2,10 @@ var _ = require( 'lodash')
 var data = [
 	{name: 'Matt Hsiung',
 	text: "yolo!",
-	id: 99},
+	id: 0},
 	{name: 'Prakash Mallela',
 	text: 'swagg',
-	id: 98}
+	id: 1}
 ];
 
 function add (name, text) {
@@ -13,7 +13,12 @@ function add (name, text) {
 };
 
 function list () {
-  return _.cloneDeep(data);
+  return _.cloneDeep(data.sort(function(a,b){
+    console.log("jaja");
+    console.log(a.id);
+    console.log(typeof a);
+    return b.id-a.id;
+  }));
 };
 
 function find (properties) {
@@ -29,7 +34,7 @@ var randArrayEl = function(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-var id=0
+var id=2
 
 var getId = function(){
 	return id++
