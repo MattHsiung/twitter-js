@@ -28,7 +28,12 @@ module.exports = function (io) {
 		var text = req.body.text;
 		tweetBank.add(name, text);
 		io.sockets.emit('new_tweet', {name: name, text: text})
-		res.redirect('/');
+		res.redirect('/')
+	});
+
+	router.get('/fun/', function(req,res) { 	
+		
+		io.sockets.emit('fun')
 	});
 
 	router.get('/tweets/:id', function (req, res) {

@@ -14,7 +14,7 @@
   {% endif %}
 
   <div class="page-header">
-    <h1>Welcome to Twitter.js!</h1>
+    <h1>Welcome to cohort 1601</h1>
   </div>
   <div class="row">
     <div class="col-md-3">
@@ -32,23 +32,6 @@
       {% endfor %}
       
     </div>
-  </div>
-  <script src="/socket.io/socket.io.js"></script>
-<script>
-  // Load the socket.io library above, then connect to the server.
-  // Because the socket.io server is being run on the same server as your 
-  // Express instance, you can connect() without any arguments.
-  var socket = io.connect();
-
-  // When 'new_tweet' events are fired, do something with the packaged tweet
-  socket.on('new_tweet', function (tweet) { 
-    // $('#tweetList').append('<li><a href="/users/{{tweet.name}}"><h4>'+tweet.name+'</h4></a> <br> 
-    //     '+tweet.text+'</li>')
-    $('#tweetList').prepend('<li><a href="/users/'+tweet.name+'"><h4>'+tweet.name+'</h4></a><br>'+tweet.text+'</li>')
-    // some logic to add the new tweet to the DOM…
-  }); 
-</script>
-
- 
+  </div> 
     
 {% endblock %}
