@@ -4,7 +4,9 @@ var swig = require('swig');
 var app = express();
 var routes = require( './routes/' );
 var socketio = require('socket.io');
+var morgan = require('morgan');
 //---------------SETUP
+app.use(morgan('dev')); //logger
 swig.setDefaults({ cache: false});
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
